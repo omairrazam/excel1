@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 	        return: "#{Rails.application.secrets.app_host}#{return_path}",
 	        invoice: id,
 	        amount: 12,
-	        item_name: email,
+	        item_name: "testing",
 	        item_number: id,
 	        quantity: '1'
 	    }
