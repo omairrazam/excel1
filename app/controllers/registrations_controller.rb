@@ -9,6 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
 
 
   def after_inactive_sign_up_path_for(resource)
-    resource.paypal_url(resource)
+    debugger
+    resource.paypal_url(home_index_path)
   end
 end
