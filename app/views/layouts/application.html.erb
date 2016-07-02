@@ -7,13 +7,34 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= flash[:notice] %>
-<%= flash[:alert] %>
-<% if user_signed_in? %>
- <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
-<% end %>
-
-<%= yield %>
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <%= link_to "Home", root_path,:class => "blog-nav-item active" %>
+          <span class="navbar-right">
+	          <% if user_signed_in? %>
+	            <a class="blog-nav-item " href="../navbar/">My Account</a>
+	            <%= link_to "Log out", destroy_user_session_path,:class => "blog-nav-item", :method => :delete %>
+		      <% else %>
+		       <%= link_to "Log In", new_user_session_path,:class => "blog-nav-item" %>
+	          <% end %>
+          </span>
+        </nav>
+      </div>
+    </div>
+    
+    <div class="container">
+	    <% flash.each do  |name,msg| %>
+    	<div class="row">
+	        <div class="info-display">
+	          <div class="message <%= get_notification_class name %>">
+	            <strong><%= msg %></strong> 
+	          </div>
+	        </div>
+	    </div>
+	<% end %>
+	<%= yield %>
+	</div>
 
 </body>
 </html>
