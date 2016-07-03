@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
     has_many :transactions
 	def active_for_authentication?
 	# Uncomment the below debug statement to view the properties of the returned self model values.
@@ -11,4 +12,11 @@ class User < ActiveRecord::Base
 	end
       
    
+
+
+ private    
+	def password_required?
+  		new_record? ? super : false
+	end  
+
 end
