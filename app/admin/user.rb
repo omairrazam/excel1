@@ -13,7 +13,7 @@ ActiveAdmin.register User do
 #   permitted
 # end
 
-permit_params :email, :password, :account_active, :is_admin
+permit_params :email, :password, :account_active
   index do
     column :email
     column :current_sign_in_at
@@ -27,7 +27,6 @@ permit_params :email, :password, :account_active, :is_admin
       f.input :email
       f.input :password
       f.input :account_active
-      f.input :is_admin
     end
     f.actions
   end  

@@ -5,17 +5,22 @@ class Transaction < ActiveRecord::Base
 	    values = {
 	    	#ip: request.remote_ip
 	        business: "omairr.azam-facilitator@gmail.com",
-	        cmd: "_xclick",
+	        no_shipping: 1,
 	        upload: 1,
 	        return: "#{Rails.application.secrets.app_host}#{return_path}",
 	        invoice: id,
-	        amount: 12,
-	        item_name: "testing",
-	        item_number: id,
-	        quantity: '1',
-	        notify_url: "#{Rails.application.secrets.app_host}/hook",
-	        
+	        item_name: "dumppy",
+	        notify_url: "#{Rails.application.secrets.app_host}/hook",  
+	        cmd: "_xclick-subscriptions",
+            a3: 12,
+            p3: 1,
+            srt: user.cycles,
+            t3: user.period.first
 	    }
+
+
+      
+             #debugger
 	    "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
   	end  
 end

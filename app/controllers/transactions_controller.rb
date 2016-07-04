@@ -33,14 +33,14 @@ class TransactionsController < ApplicationController
 	end
 
 	def paypal_return
-		 @transaction = Transaction.find params[:invoice]
-		 @user = @transaction.user
+		# @transaction = Transaction.find params[:invoice]
+		# @user = @transaction.user
 		 #debugger
 		#warden.set_user @user
 		#sign_in( @user, , :bypass => true)
 		#warden.authenticate!
-		sign_in_and_redirect(@user)
-		#redirect_to root_path
+		#sign_in_and_redirect(@user)
+		redirect_to root_path
 		# #redirect_to root_path , flash: {notice: "Please verify through email"}
 	end
 end

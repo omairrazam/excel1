@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  post "/paypal_return" => "transactions#paypal_return"
+  get "/paypal_return" => "transactions#paypal_return"
   post "/hook" => "transactions#paypal_hook"
   devise_for :users,controllers: { registrations: 'registrations' }
   ActiveAdmin.routes(self)
