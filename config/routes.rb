@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :commentaries
   get "/paypal_return" => "transactions#paypal_return"
   post "/hook" => "transactions#paypal_hook"
   devise_for :users,controllers: { registrations: 'registrations' }
@@ -6,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users
  
-  root 'home#index'
+  root 'commentaries#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

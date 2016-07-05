@@ -1,0 +1,25 @@
+<h2>
+    <a href="#"><%= commentary.title %></a>
+    <% if user_signed_in? and current_user.is_admin? %>
+	    <div class="pull-right">
+			<a class="btn btn-info btn-xs" href="#">Show </a>
+			<a class="btn btn-info btn-xs" href="#">Edit </a>
+			<a class="btn btn-info btn-xs" href="#">Delete </a>
+		</div>
+	<% end %>
+</h2>
+<hr>
+<div>
+<p class="">
+    by <a href="index.php"><%= commentary.user.email %></a>
+    <span class="pull-right"><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</span>
+</p>
+
+
+</div>
+<hr>
+
+<p><%= commentary.body %></p>
+<a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+<hr>

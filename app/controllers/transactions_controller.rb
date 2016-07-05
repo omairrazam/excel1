@@ -19,7 +19,7 @@ class TransactionsController < ApplicationController
 	   	  @user.update_attributes account_active: true
 	      @transaction.update_attributes notification: params, status: status, transaction_id: params[:txn_id], purchased_at: Time.now
 	      #@user.send_confirmation_instructions
-	      sign_in( @user )
+	     
 	      
 	    end
 	    #flash[:success] = "Thanks for registration, you can login now"

@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
     has_many :transactions
+    has_many :commentaries
 	def active_for_authentication?
 	# Uncomment the below debug statement to view the properties of the returned self model values.
 	# logger.debug self.to_yaml
@@ -12,8 +13,6 @@ class User < ActiveRecord::Base
 	end
       
    
-
-
  private    
 	def password_required?
   		new_record? ? super : false

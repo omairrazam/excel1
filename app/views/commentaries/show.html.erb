@@ -1,0 +1,12 @@
+<p>
+  <strong>Title:</strong>
+  <%= @commentary.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @commentary.body %>
+</p>
+
+<%= link_to 'Edit', edit_commentary_path(@commentary) %> |
+<%= link_to 'Back', commentaries_path %>
