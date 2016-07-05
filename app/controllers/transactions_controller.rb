@@ -1,46 +1,41 @@
 class TransactionsController < ApplicationController
-	def create
-
-	end
-
-	def edit
-		
-	end
-
+	protect_from_forgery except: [:hook]
+	
 	def show
 		@transaction = Transaction.find params[:id]
 	end
 
 	def paypal_hook
-		
+		debugger
 		params.permit! # Permit all Paypal input params
-		#debugger
+		
+
 		status = params[:payment_status]
 		@transaction = Transaction.find params[:invoice]
 		@user = @transaction.user
-	    #@custom = Base64.decode64(params[:custom])
-	    #@user = User.ne
-	    #@user.email = @custom[0]
-	    #@user.password = @custom[2]
+	    
 	    
 	    if status == "Completed" 
 	   	  @user.update_attributes account_active: true
 	      @transaction.update_attributes notification: params, status: status, transaction_id: params[:txn_id], purchased_at: Time.now
 	      #@user.send_confirmation_instructions
+	      sign_in( @user )
+	      
 	    end
-	    #redirect_to root_path 
+	    #flash[:success] = "Thanks for registration, you can login now"
+	    #redirect_to new_user_session_path 
 	    render nothing: true
 	end
 
 	def paypal_return
-		# @transaction = Transaction.find params[:invoice]
-		# @user = @transaction.user
-		 #debugger
-		#warden.set_user @user
-		#sign_in( @user, , :bypass => true)
-		#warden.authenticate!
-		#sign_in_and_redirect(@user)
-		redirect_to root_path
+		#debugger
+		u = User.last
+		u.account_active = true
+		u.save!
+
+		flash.clear
+		flash[:success] =  "Thanks for subscribing, You are now logged in"
+		sign_in_and_redirect(User.last)
 		# #redirect_to root_path , flash: {notice: "Please verify through email"}
 	end
 end

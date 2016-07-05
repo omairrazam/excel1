@@ -9,18 +9,17 @@ class Transaction < ActiveRecord::Base
 	        upload: 1,
 	        return: "#{Rails.application.secrets.app_host}#{return_path}",
 	        invoice: id,
-	        item_name: "dumppy",
+	        item_name: "dumppy2",
 	        notify_url: "#{Rails.application.secrets.app_host}/hook",  
 	        cmd: "_xclick-subscriptions",
             a3: 12,
             p3: 1,
             srt: user.cycles,
-            t3: user.period.first
+            t3: user.period.first,
+            #rm:2
 	    }
+	
 
-
-      
-             #debugger
 	    "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
   	end  
 end
