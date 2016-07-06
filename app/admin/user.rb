@@ -13,7 +13,7 @@ ActiveAdmin.register User do
 #   permitted
 # end
 
-permit_params :email, :password, :account_active
+permit_params :email, :password, :account_active, :is_admin
   index do
     selectable_column
     column :email
@@ -28,6 +28,7 @@ permit_params :email, :password, :account_active
       f.input :email
       f.input :password
       f.input :account_active
+      f.input :is_admin
     end
     f.actions
   end  

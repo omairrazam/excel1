@@ -1,10 +1,11 @@
 class CommentariesController < ApplicationController
   before_action :set_commentary, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_admin_user!, only:[:create, :update , :delete, :new]
+  before_filter :authenticate_user!, only:[:show]
   # GET /commentaries
   # GET /commentaries.json
   def index
-    @commentaries = Commentary.all
+    @commentaries = Commentary.all.page(params[:page]).per(5)
   end
 
   # GET /commentaries/1
