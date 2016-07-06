@@ -8,36 +8,33 @@
   <%= yield :head %>
 </head>
 <body>
-
-    <div class="blog-masthead">
-      <div class="container">
-        <nav class="blog-nav">
-          <%= link_to "Commentary", root_path,:class => "blog-nav-item active" %>
-          <span class="navbar-right">
-	          <% if user_signed_in? %>
-              <% if current_user.is_admin? %>
-                <%= link_to "Create Commentary", new_commentary_path,:class => "blog-nav-item"%>
-              <% end %>
-              <%= link_to "MyAccount", user_path(current_user),:class => "blog-nav-item"%>
-	            <%= link_to "Log out", destroy_user_session_path,:class => "blog-nav-item", :method => :delete %>
-		      <% else %>
-		       <%= link_to "Log In", new_user_session_path,:class => "blog-nav-item" %>
-	          <% end %>
-          </span>
-        </nav>
-      </div>
+  <div class="blog-masthead">
+    <div class="container">
+      <nav class="blog-nav">
+        <%= nav_link 'Commentary', root_path %>
+        <%= nav_link 'Contact Us', contact_us_path %>
+        
+        <span class="navbar-right">
+          <% if user_signed_in? %>
+            <% if current_user.is_admin? %>
+              <%= link_to "Create Commentary", new_commentary_path,:class => "blog-nav-item"%>
+            <% end %>
+            <%= link_to "MyAccount", user_path(current_user),:class => "blog-nav-item"%>
+            <%= link_to "Log out", destroy_user_session_path,:class => "blog-nav-item", :method => :delete %>
+	      <% else %>
+	       <%= link_to "Log In", new_user_session_path,:class => "blog-nav-item" %>
+          <% end %>
+        </span>
+      </nav>
     </div>
-    
-    <div class="container container-content">
-     <div class="row">
-    	
-	    	<%= render :partial => "/print_flash_messages" %>
-        </div>
-	    
-	     <%= yield %>
-	  </div>
-
-
+  </div>
+  
+  <div class="container container-content">
+    <div class="row">
+    	<%= render :partial => "/print_flash_messages" %>
+    </div>
+     <%= yield %>
+  </div>
 </body>
 </html>
 <!--
