@@ -17,3 +17,5 @@
 /tmp
 .byebug_history
 /config/secrets.yml
+/test
+Gemfile.lock

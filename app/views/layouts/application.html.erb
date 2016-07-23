@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Dev</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -7,24 +8,53 @@
   <%= csrf_meta_tags %>
   <%= yield :head %>
 </head>
+
 <body>
   <div class="blog-masthead">
     <div class="container">
       <nav class="blog-nav">
         <%= nav_link 'Commentary', root_path %>
+        <%= nav_link 'Active Studies', active_studies_path %>
+        <%= nav_link 'Interactive Charts', interactive_charts_path %>
+        <%= nav_link 'General Market Studies', market_studies_path %>
+        <%= nav_link 'Interested?', interesteds_path %>
         <%= nav_link 'Contact Us', contact_us_path %>
-        
-        <span class="navbar-right">
+       
+        <% if user_signed_in? %>
+          <span class="dropdown navbar-right">
+            <a class="blog-nav-item "  data-toggle="dropdown">Settings
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "MyAccount", user_path(current_user),:class => ""%></li>
+              <li><%= link_to "Log out", destroy_user_session_path,:class => "", :method => :delete %></li>
+             
+              <% if current_user.is_admin? %>
+                <li class="divider"></li>
+                
+                <li><%= link_to "Create Commentary", new_commentary_path,:class => ""%></li>
+                <li><%= link_to "Panel", admin_dashboard_path,:class => ""%></li>
+              <% end %>
+
+           
+            </ul>
+          </span>
+        <% end %>
+
+
+        <!-- <span class="navbar-right">
           <% if user_signed_in? %>
+
             <% if current_user.is_admin? %>
-              <%= link_to "Create Commentary", new_commentary_path,:class => "blog-nav-item"%>
+              <%= link_to "Create Commentary", new_commentary_path,:class => "label label-info blog-nav-item"%>
+              <%= link_to "Panel", admin_dashboard_path,:class => "label label-info blog-nav-item"%>
             <% end %>
+
             <%= link_to "MyAccount", user_path(current_user),:class => "blog-nav-item"%>
             <%= link_to "Log out", destroy_user_session_path,:class => "blog-nav-item", :method => :delete %>
 	      <% else %>
 	       <%= link_to "Log In", new_user_session_path,:class => "blog-nav-item" %>
           <% end %>
-        </span>
+        </span> -->
       </nav>
     </div>
   </div>
@@ -33,6 +63,7 @@
     <div class="row">
     	<%= render :partial => "/print_flash_messages" %>
     </div>
+    
      <%= yield %>
   </div>
 </body>

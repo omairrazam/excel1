@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :market_studies
+  resources :interesteds
   resources :commentaries
   get "/paypal_return" => "transactions#paypal_return"
   post "/hook" => "transactions#paypal_hook"
@@ -6,7 +8,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :users
- 
+  get "/active_studies" => "commentaries#active_studies"
+  get "/interactive_charts" => "interactive_charts#show_page"
   root 'commentaries#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

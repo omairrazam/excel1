@@ -32,3 +32,16 @@ ContactUs.setup do |config|
   # config.parent_mailer = "ActionMailer::Base"
 
 end
+
+ContactUs::ContactsController.class_eval do
+  def create
+    @contact = ContactUs::Contact.new(params[:contact_us_contact])
+
+    if @contact.save
+      redirect_to(ContactUs.success_redirect || '/', :notice => t('contact_us.notices.success'))
+    else
+      flash.now[:alert] = t('contact_us.notices.error')
+      render_new_page
+    end
+  end
+end

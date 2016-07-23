@@ -72,3 +72,12 @@
 
 
 /* notification styling end */
+
+.dropdown{
+  cursor: pointer;
+}
+
+.blog-masthead {
+  margin-bottom: 3rem;
+}
+

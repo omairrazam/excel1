@@ -12,11 +12,22 @@
   </div><!-- /.blog-main -->
 
   <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+    
     <div class="sidebar-module sidebar-module-inset">
-      <h4>About</h4>
-      <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+      <div class="panel panel-default">
+      <div class="panel-heading"><%= current_user.present? ?  "Your Info":  "Sign In" %></div>
+        <div class="panel-body">
+          <% if current_user.blank? %>
+          <%= render :partial => 'devise/sessions/form'%>
+          <% else %>
+            <strong>Signed in as : </strong><br>
+            <p><%= current_user.email %></p>
+          <% end %>
+        </div>
+      </div>
     </div>
-    <div class="sidebar-module">
+    
+    <!-- <div class="sidebar-module">
       <h4>Archives</h4>
       <ol class="list-unstyled">
         <li><a href="#">March 2014</a></li>
@@ -32,7 +43,7 @@
         <li><a href="#">May 2013</a></li>
         <li><a href="#">April 2013</a></li>
       </ol>
-    </div>
+    </div> -->
     <div class="sidebar-module">
       <h4>Elsewhere</h4>
       <ol class="list-unstyled">

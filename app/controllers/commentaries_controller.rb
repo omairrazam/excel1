@@ -63,6 +63,10 @@ class CommentariesController < ApplicationController
     end
   end
 
+  def active_studies
+    @active_studies = Commentary.all.page(params[:page]).per(20)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_commentary
@@ -71,6 +75,6 @@ class CommentariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def commentary_params
-      params.require(:commentary).permit(:title, :body)
+      params.require(:commentary).permit(:title, :body, :typee, :priceTarget)
     end
 end
