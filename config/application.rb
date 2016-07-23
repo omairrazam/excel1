@@ -25,5 +25,9 @@ module Dev
 
     config.autoload_paths << Rails.root.join('lib')
     config.app_generators.scaffold_controller = :scaffold_controller
+
+    config.assets.precompile += Ckeditor.assets
+    config.assets.precompile += %w( ckeditor/* )
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
   end
 end
