@@ -42,8 +42,12 @@ group :development do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  #gem 'spring'
+group :development do
   gem 'spring'
 end
+
+
 
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -51,3 +55,4 @@ gem 'kaminari', '~> 0.17.0'
 gem 'contact_us', '~> 1.1'
 gem 'ckeditor'
 
+end

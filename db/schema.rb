@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160723084247) do
+ActiveRecord::Schema.define(version: 20160723165423) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -28,6 +28,25 @@ ActiveRecord::Schema.define(version: 20160723084247) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
+# Could not dump table "adts" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "sheetname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "charts", force: :cascade do |t|
+    t.string   "sheetname"
+    t.string   "x_col_name"
+    t.string   "y1_col_name"
+    t.string   "y2_col_name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
+  end
+
   create_table "commentaries", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -36,6 +55,12 @@ ActiveRecord::Schema.define(version: 20160723084247) do
     t.datetime "updated_at",  null: false
     t.string   "typee"
     t.string   "priceTarget"
+  end
+
+  create_table "graphs", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "chart_id"
   end
 
   create_table "interesteds", force: :cascade do |t|
