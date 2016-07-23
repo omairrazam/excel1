@@ -12,3 +12,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( commentaries.scss )
 Rails.application.config.assets.precompile += %w( interactive_charts.scss )
 Rails.application.config.assets.precompile += %w( interactive_charts.js )
+Rails.application.config.assets.precompile += %w( bootstrap-select.css )
