@@ -1,5 +1,9 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js">
+  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/i18n/defaults-*.min.js"></script>
+
 <div class="nav-side-menu">
     <div class="brand">Chart Options</div>
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
@@ -7,6 +11,10 @@
         <div class="menu-list">
   
             <ul id="menu-content" class="menu-content collapse out">
+
+          
+            
+             
                 
                 <li  data-toggle="collapse" data-target="#products" class="collapsed active">
                   <a href="#"><i class="fa fa-bar-chart"></i> MM Timing Model <span class="arrow"></span></a>
@@ -27,7 +35,7 @@
                 <li data-toggle="collapse" data-target="#service" class="collapsed">
                   <a href="#"><i class="fa fa-bar-chart"></i> NYSE Chart Dashboard <span class="arrow"></span></a>
                 </li>  
-                <ul class="sub-menu collapse" id="service">
+                <ul class="sub-menu collapse"  id="service" >
                   <li>New Service 1</li>
                   <li>New Service 2</li>
                   <li>New Service 3</li>
@@ -36,13 +44,15 @@
 
                 <li data-toggle="collapse" data-target="#new" class="collapsed">
                   <a href="#"><i class="fa fa-bar-chart"></i> S&P 500 Chart <span class="arrow"></span></a>
-                </li>
-                <ul class="sub-menu collapse" id="new">
-                  <li>New New 1</li>
-                  <li>New New 2</li>
-                  <li>New New 3</li>
-                </ul>
-
+                <ul  id="new">
+                  <select   class="selectpicker  editing" multiple>
+                   <option>New New 1</option>
+                   <option>New New 2</option>
+                   <option>New New 3</option>
+                  </select>
+                </ul>    
+                 </li>
+ 
                 <li data-toggle="collapse" data-target="#new" class="collapsed">
                   <a href="#"><i class="fa fa-bar-chart"></i> VS Common Stocks <span class="arrow"></span></a>
                 </li>

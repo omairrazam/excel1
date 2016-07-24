@@ -9,7 +9,24 @@ Licensed under MIT
 
 body {
   background: #F1F3FA;
+  
+  
 }
+
+.tab-pane p{
+    font-size:120%;
+    color:midnightblue;
+    font-weight: bold;
+    
+}
+
+.tab-pane span{
+    font-size:100%;
+    color:dimgray;
+    
+    
+}
+
 
 /* Profile container */
 .profile {
@@ -25,16 +42,16 @@ body {
 .profile-userpic img {
   float: none;
   margin: 0 auto;
-  width: 50%;
-  height: 50%;
+  width: 62%;
+  height: 62%;
   -webkit-border-radius: 50% !important;
   -moz-border-radius: 50% !important;
   border-radius: 50% !important;
-}
+ }
 
 .profile-usertitle {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 .profile-usertitle-name {
