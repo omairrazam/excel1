@@ -46,7 +46,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg', '0.18.4'
+  #gem 'pg'
 end
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -56,4 +56,8 @@ gem 'ckeditor'
 
 gem 'carrierwave', '~> 0.11.2'
 gem 'mini_magick', '~> 4.5'
-end
+
+#gem "rmagick"
+
+
+

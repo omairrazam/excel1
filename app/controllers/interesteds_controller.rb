@@ -69,6 +69,6 @@ class InterestedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def interested_params
-      params.require(:interested).permit(:content)
+      params.require(:interested).permit(:content,:image)
     end
 end
