@@ -54,3 +54,6 @@ gem 'kaminari', '~> 0.17.0'
 gem 'contact_us', '~> 1.1'
 gem 'ckeditor'
 
+gem 'carrierwave', '~> 0.11.2'
+gem 'mini_magick', '~> 4.5'
+end
