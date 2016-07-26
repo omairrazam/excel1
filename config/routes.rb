@@ -11,6 +11,13 @@ Rails.application.routes.draw do
   get "/active_studies" => "commentaries#active_studies"
   get "/interactive_charts" => "interactive_charts#show_page"
   root 'commentaries#index'
+
+#ORIGNAL ROUTE BY GITHUB
+#match "/uploads/:id/:basename.:extension", :controller => "redocuments", :action => "download", :conditions => { :method => :get }
+
+#Modified Route
+ match "/uploads/:id/:test.:ods", :to => "interesteds#download", :via => { :method => :get }
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

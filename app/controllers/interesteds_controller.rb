@@ -61,6 +61,11 @@ class InterestedsController < ApplicationController
     end
   end
 
+def download
+  path = "/#{interested.interested}"
+  send_file path, :x_sendfile=>true
+end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_interested

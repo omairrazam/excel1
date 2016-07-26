@@ -6,7 +6,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   storage :file
 
   def store_dir
-    "uploads/basit"
+  "uploads/#{model.id}"
   end
 
   
