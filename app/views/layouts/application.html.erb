@@ -20,7 +20,8 @@
         <%= nav_link 'Market Studies', root_path %>
         <%= nav_link 'Active Studies', active_studies_path %>
         <%= nav_link 'Interactive Charts', interactive_charts_path %>
-        <%= nav_link 'Timing Model', timing_models_path %>
+        <%= nav_link 'Market Internals', market_internals_path %>
+        <%= nav_link 'General Market Internals', general_market_studies_path %>
         <%#= nav_link 'Interested?', interesteds_path %>
         <%= nav_link 'Contact Us', contact_us_path %>
        
@@ -35,12 +36,11 @@
               <% if current_user.is_admin? %>
                 <li class="divider"></li>
                 
-                <li><%= link_to "Create Market Study", new_commentary_path,:class => ""%></li>
-                <li><%= link_to 'Create Market Model', new_timing_model_path %></li>
+                <li><%= link_to "Create Market Study", new_market_study_path,:class => ""%></li>
+                <li><%= link_to 'Create Market Internal', new_market_internal_path %></li>
+                <li><%= link_to 'Create General Market Study', new_general_market_study_path %></li>
                 <li><%= link_to "Panel", admin_dashboard_path,:class => ""%></li>
               <% end %>
-
-           
             </ul>
           </span>
         <% end %>

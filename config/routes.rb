@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :timing_models
+  resources :general_market_studies
+  resources :market_internals
   resources :market_studies
   resources :interesteds
   resources :commentaries
@@ -9,9 +10,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :users
-  get "/active_studies" => "commentaries#active_studies"
+  get "/active_studies" => "market_studies#active_studies"
   get "/interactive_charts" => "interactive_charts#show_page"
-  root 'commentaries#index'
+  root 'market_studies#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

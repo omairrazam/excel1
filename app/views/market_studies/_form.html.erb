@@ -1,7 +1,7 @@
 <%= form_for(@market_study) do |f| %>
   <% if @market_study.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@market_study.errors.count, "error") %> prohibited this market_study from being saved:</h2>
+      <h2><%= pluralize(@market_study.errors.count, "error") %> prohibited this commentary from being saved:</h2>
 
       <ul>
       <% @market_study.errors.full_messages.each do |message| %>
@@ -10,16 +10,28 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title , class:  "form-control"%>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class:  "form-control" %>
+    
   </div>
-  <div class="field">
+  <div class="form-group">
+    <%= f.label :type %>
+    <%= f.text_field :typee, class:  "form-control" %>
+    
+  </div>
+  <div class="form-group">
+    <%= f.label :priceTarget %>
+    <%= f.text_field :price_target, class:  "form-control" %>
+    
+  </div>
+  <div class="form-group">
     <%= f.label :content %><br>
-    <%= f.text_area :content , class:  "form-control"%>
+    <%= f.cktext_area :content, class: "form-control" %>
+   
   </div>
-  <div class="actions">
-    <%= f.submit  class: "btn btn-primary"%>
-  </div>
+  <%= f.submit  class: "btn btn-primary" %>
+ 
 <% end %>
+
+

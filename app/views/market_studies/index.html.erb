@@ -1,43 +1,39 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag  'commentaries', media: 'all' %>
+<% end %>
 
+<div class="row">
 
+  <div class="col-sm-8 blog-main">
+    <%= render :partial => @market_studies %>
 
+  <center><%= paginate @market_studies %></center>
 
-<div class = "narrow-container">
-<p id="notice"><%= notice %></p>
-  
-  <hr>
-  
-  <table class="table table-striped">
-  <thead>
-    <thead>
-      <tr>
-        <th>Date of Post</th>
-        <th> Title</th>
-        <th>Content</th>
-        <% if current_user.present? and current_user.is_admin? %>
-          <th></th>
-        <% end %>
-      </tr>
-    </thead>
-  </thead>
-  <tbody>
-    <% @market_studies.each do |market_study| %>
-      <tr>
-        <td><%= market_study.created_at.strftime("%B %d, %Y") %></td>
-      <td><%= link_to market_study.title , market_study%></td>
-      <td><%= market_study.content %></td>
-      <% if current_user.present? and current_user.is_admin? %>
-        <td><span class="glyphicon glyphicon-scissors" aria-hidden="true"></span> &nbsp;&nbsp;<%= link_to 'Edit', edit_market_study_path(market_study)  %></td>
-      <% end %>
-    </tr>
-      <% end %>
+  </div><!-- /.blog-main -->
+
+  <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
     
-  </tbody>
-
-  </table>
-
-  
-</div>
-
-
-</div>
+    <div class="sidebar-module sidebar-module-inset">
+      <div class="panel panel-default">
+      <div class="panel-heading"><%= current_user.present? ?  "Your Info":  "Sign In" %></div>
+        <div class="panel-body">
+          <% if current_user.blank? %>
+          <%= render :partial => 'devise/sessions/form'%>
+          <% else %>
+            <strong>Signed in as : </strong><br>
+            <p><%= current_user.email %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="sidebar-module">
+      <h4>Elsewhere</h4>
+      <ol class="list-unstyled">
+        <li><a href="#">GitHub</a></li>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">Facebook</a></li>
+      </ol>
+    </div>
+  </div><!-- /.blog-sidebar -->
+</div><!-- /.row -->

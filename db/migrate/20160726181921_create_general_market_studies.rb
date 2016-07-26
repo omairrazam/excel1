@@ -1,6 +1,6 @@
-class CreateTimingModels < ActiveRecord::Migration
+class CreateGeneralMarketStudies < ActiveRecord::Migration
   def change
-    create_table :timing_models do |t|
+    create_table :general_market_studies do |t|
       t.string :title
       t.text :content
 

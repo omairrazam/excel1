@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726144832) do
+ActiveRecord::Schema.define(version: 20160726181921) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -38,7 +38,21 @@ ActiveRecord::Schema.define(version: 20160726144832) do
     t.string   "priceTarget"
   end
 
+  create_table "general_market_studies", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "interesteds", force: :cascade do |t|
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "market_internals", force: :cascade do |t|
+    t.string   "title"
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -47,8 +61,11 @@ ActiveRecord::Schema.define(version: 20160726144832) do
   create_table "market_studies", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "typee"
+    t.string   "price_target"
+    t.integer  "user_id"
   end
 
   create_table "timing_models", force: :cascade do |t|
