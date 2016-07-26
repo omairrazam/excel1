@@ -45,9 +45,9 @@ group :development do
   gem 'spring'
 end
 
-#group :production do
- # gem 'pg', '0.18.4'
-#end
+group :production do
+  gem 'pg', '0.18.4'
+end
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'kaminari', '~> 0.17.0'
