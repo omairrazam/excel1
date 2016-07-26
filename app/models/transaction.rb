@@ -16,10 +16,10 @@ class Transaction < ActiveRecord::Base
             p3: 1,
             srt: user.cycles,
             t3: user.period.first,
-            #rm:2
+            rm:2
 	    }
 	
-
+	    #debugger
 	    "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
   	end  
 end

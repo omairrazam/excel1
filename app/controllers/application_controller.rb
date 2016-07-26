@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    #paypal_return_path
     if resource.is_admin?
         admin_dashboard_path
     else

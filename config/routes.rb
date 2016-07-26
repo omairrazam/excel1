@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :market_studies
   resources :interesteds
   resources :commentaries
-  get "/paypal_return" => "transactions#paypal_return"
+  post "/paypal_return" => "transactions#paypal_return"
   post "/hook" => "transactions#paypal_hook"
   devise_for :users,controllers: { registrations: 'registrations' }
   ActiveAdmin.routes(self)

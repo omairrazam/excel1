@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726190410) do
+ActiveRecord::Schema.define(version: 20160726230716) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -28,6 +28,20 @@ ActiveRecord::Schema.define(version: 20160726190410) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
+  create_table "adts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "graph_id"
+  end
+
+  add_index "adts", ["graph_id"], name: "index_adts_on_graph_id"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "sheetname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "commentaries", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -38,12 +52,34 @@ ActiveRecord::Schema.define(version: 20160726190410) do
     t.string   "priceTarget"
   end
 
+  create_table "datasets", force: :cascade do |t|
+    t.string   "sheet_name"
+    t.string   "x_colname"
+    t.string   "y1_colname"
+    t.string   "y2_colname"
+    t.integer  "adt_id"
+    t.integer  "graph_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "datasets", ["adt_id"], name: "index_datasets_on_adt_id"
+  add_index "datasets", ["graph_id"], name: "index_datasets_on_graph_id"
+
   create_table "general_market_studies", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "graphs", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
+  end
+
+  add_index "graphs", ["category_id"], name: "index_graphs_on_category_id"
 
   create_table "interesteds", force: :cascade do |t|
     t.text     "content"
@@ -80,9 +116,46 @@ ActiveRecord::Schema.define(version: 20160726190410) do
     t.string   "status"
     t.string   "transaction_id"
     t.datetime "purchased_at"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "user_id"
+    t.string   "transaction_subject"
+    t.datetime "payment_date"
+    t.string   "txn_type"
+    t.string   "subscr_id"
+    t.string   "last_name"
+    t.string   "residence_country"
+    t.string   "item_name"
+    t.string   "payment_gross"
+    t.string   "mc_currency"
+    t.string   "business"
+    t.string   "payment_type"
+    t.string   "protection_eligibility"
+    t.string   "verify_sign"
+    t.string   "payer_status"
+    t.string   "test_ipn"
+    t.string   "payer_email"
+    t.string   "txn_id"
+    t.string   "receiver_email"
+    t.string   "first_name"
+    t.string   "invoice"
+    t.string   "payer_id"
+    t.string   "receiver_id"
+    t.string   "payment_status"
+    t.string   "payment_fee"
+    t.string   "mc_fee"
+    t.string   "mc_gross"
+    t.string   "charset"
+    t.string   "notify_version"
+    t.string   "ipn_track_id"
+    t.string   "auth"
+    t.string   "mc_amount3"
+    t.string   "period3"
+    t.string   "subscr_date"
+    t.string   "recur_times"
+    t.string   "reattempt"
+    t.integer  "recurring"
+    t.string   "amount3"
   end
 
   add_index "transactions", ["user_id"], name: "index_transactions_on_user_id"
