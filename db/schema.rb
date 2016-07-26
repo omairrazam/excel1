@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726181921) do
+ActiveRecord::Schema.define(version: 20160726190410) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20160726181921) do
     t.boolean  "recurring",              default: true
     t.string   "period",                 default: "Month"
     t.integer  "cycles",                 default: 12
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
