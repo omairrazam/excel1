@@ -4,7 +4,7 @@
 
 <div class = "narrow-container">
 <p id="notice"><%= notice %></p>
-  <h2>Listing Market Studies</h2>
+  
   <hr>
   
   <table class="table table-striped">
@@ -40,37 +40,4 @@
 </div>
 
 
-</div>
-
-<!--
-<div class = "narrow-container">
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Market Studies</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @market_studies.each do |market_study| %>
-      <tr>
-        <td><%= market_study.title %></td>
-        <td><%= market_study.content %></td>
-        <td><%= link_to 'Show', market_study %></td>
-        <td><%= link_to 'Edit', edit_market_study_path(market_study) %></td>
-        <td><%= link_to 'Destroy', market_study, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Market study', new_market_study_path %>
 </div>

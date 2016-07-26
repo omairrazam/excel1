@@ -1,0 +1,32 @@
+
+
+
+<%= form_for(@timing_model) do |f| %>
+  <% if @timing_model.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@timing_model.errors.count, "error") %> prohibited this commentary from being saved:</h2>
+
+      <ul>
+      <% @timing_model.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class:  "form-control" %>
+    
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :content %><br>
+    <%= f.cktext_area :content, class: "form-control" %>
+   
+  </div>
+  <%= f.submit  class: "btn btn-primary" %>
+ 
+<% end %>
+
+
+

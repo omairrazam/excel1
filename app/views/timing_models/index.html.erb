@@ -1,0 +1,78 @@
+<!-- <p id="notice"><%= notice %></p>
+
+<h1>Listing Timing Models</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @timing_models.each do |timing_model| %>
+      <tr>
+        <td><%= timing_model.title %></td>
+        <td><%= timing_model.content %></td>
+        <td><%= link_to 'Show', timing_model %></td>
+        <td><%= link_to 'Edit', edit_timing_model_path(timing_model) %></td>
+        <td><%= link_to 'Destroy', timing_model, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Timing model', new_timing_model_path %>
+
+
+
+
+ -->
+
+
+
+<div class = "narrow-container">
+<p id="notice"><%= notice %></p>
+  
+  <hr>
+  
+  <table class="table table-striped">
+  <thead>
+    <thead>
+      <tr>
+        <th>Date of Post</th>
+        <th> Title</th>
+        <th>Content</th>
+        <% if current_user.present? and current_user.is_admin? %>
+          <th width="10%"></th>
+          <th width="10%"></th>
+        <% end %>
+      </tr>
+    </thead>
+  </thead>
+  <tbody>
+    <% @timing_models.each do |timing_model| %>
+      <tr>
+        <td><%= timing_model.created_at.strftime("%B %d, %Y") %></td>
+      <td><%= link_to timing_model.title , timing_model%></td>
+      <td><%= timing_model.content.html_safe %></td>
+      <% if current_user.present? and current_user.is_admin? %>
+        <td><span class="glyphicon glyphicon-scissors" aria-hidden="true"></span> &nbsp;&nbsp;<%= link_to 'Edit', edit_timing_model_path(timing_model)  %></td>
+        <td><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> &nbsp;&nbsp;<%= link_to 'Delete', edit_timing_model_path(timing_model)  %></td>
+      <% end %>
+    </tr>
+      <% end %>
+    
+  </tbody>
+
+  </table>
+
+  
+</div>
+
+
+</div>

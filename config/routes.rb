@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :timing_models
   resources :market_studies
   resources :interesteds
   resources :commentaries

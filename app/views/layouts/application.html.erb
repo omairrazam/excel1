@@ -11,13 +11,17 @@
 
 <body>
   <div class="blog-masthead">
-    <div class="container">
+
+    <div class="container-content logo">
+    <span class = "pull-left " ><%= link_to "Stock Cloud <br /> Research".html_safe, root_path %></span>
+    <div class = "container">
+    
       <nav class="blog-nav">
-        <%= nav_link 'Commentary', root_path %>
+        <%= nav_link 'Market Studies', root_path %>
         <%= nav_link 'Active Studies', active_studies_path %>
         <%= nav_link 'Interactive Charts', interactive_charts_path %>
-        <%= nav_link 'General Market Studies', market_studies_path %>
-        <%= nav_link 'Interested?', interesteds_path %>
+        <%= nav_link 'Timing Model', timing_models_path %>
+        <%#= nav_link 'Interested?', interesteds_path %>
         <%= nav_link 'Contact Us', contact_us_path %>
        
         <% if user_signed_in? %>
@@ -31,8 +35,8 @@
               <% if current_user.is_admin? %>
                 <li class="divider"></li>
                 
-                <li><%= link_to "Create Commentary", new_commentary_path,:class => ""%></li>
-                <li><%= link_to 'New Market study', new_market_study_path %></li>
+                <li><%= link_to "Create Market Study", new_commentary_path,:class => ""%></li>
+                <li><%= link_to 'Create Market Model', new_timing_model_path %></li>
                 <li><%= link_to "Panel", admin_dashboard_path,:class => ""%></li>
               <% end %>
 
@@ -41,22 +45,8 @@
           </span>
         <% end %>
 
-
-        <!-- <span class="navbar-right">
-          <% if user_signed_in? %>
-
-            <% if current_user.is_admin? %>
-              <%= link_to "Create Commentary", new_commentary_path,:class => "label label-info blog-nav-item"%>
-              <%= link_to "Panel", admin_dashboard_path,:class => "label label-info blog-nav-item"%>
-            <% end %>
-
-            <%= link_to "MyAccount", user_path(current_user),:class => "blog-nav-item"%>
-            <%= link_to "Log out", destroy_user_session_path,:class => "blog-nav-item", :method => :delete %>
-	      <% else %>
-	       <%= link_to "Log In", new_user_session_path,:class => "blog-nav-item" %>
-          <% end %>
-        </span> -->
       </nav>
+      </div>
     </div>
   </div>
   
@@ -69,9 +59,3 @@
   </div>
 </body>
 </html>
-<!--
-<% content_for :head do %>
-  <%= javascript_include_tag 'addresses' %>
-  <%= stylesheet_link_tag    'addresses', media: 'all' %>
-<% end %>
--->

@@ -64,6 +64,7 @@ class CommentariesController < ApplicationController
   end
 
   def active_studies
+    authenticate_user!
     @active_studies = Commentary.all.page(params[:page]).per(20)
   end
 

@@ -81,3 +81,29 @@
   margin-bottom: 3rem;
 }
 
+.logo{
+  color:white; 
+  margin-left:50px;
+  text-decoration: none;
+}
+
+.logo a{
+  color: white;
+}
+
+.logo a:link {
+    text-decoration: none;
+}
+
+.logo a:visited {
+    text-decoration: none;
+}
+
+.logo a:hover {
+    text-decoration: none;
+}
+
+.logo a:active {
+    text-decoration: none;
+}
+

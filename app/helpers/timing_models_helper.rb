@@ -1,0 +1,2 @@
+module TimingModelsHelper
+end

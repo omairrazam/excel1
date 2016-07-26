@@ -1,31 +1,32 @@
-
-    <div class="col-md-3">
-      <div class="profile-sidebar">
-        
-        <div class="profile-usertitle">
-          <div class="profile-usertitle-name">
-            Marcus Doe
-          </div>
-          <div class="profile-usertitle-job">
-            Subscribe at <br>
-            <p>21-07-2016</p>
-            <span class="label label-info" style="background-color:#F1F3FA"><%= link_to 'Edit', edit_user_registration_path(@users) %></span>
-             
-          </div>
-        </div>
-<div class="profile-usermenu">
-					<ul class="nav ">
-						<li class="active">
-                          <a  href="#1b" data-toggle="tab"><i class="glyphicon glyphicon-user"></i>Profile</a>
-			            </li>
-						</li>
-			            <li><a href="#2b" data-toggle="tab"><i class="glyphicon glyphicon-credit-card"></i>Paypal</a>
-			            </li>
-  		                
-						
-					</ul>
-				</div>
-				<!-- END MENU -->
-				
-			</div>
-		</div>
+  
+<div class="profile-sidebar">
+  
+  <div class="profile-usertitle">
+    <div class="profile-usertitle-name">
+      Marcus Doe
+    </div>
+    <div class="profile-usertitle-job">
+      Subscribe at <br>
+      <p>21-07-2016</p>
+      <span class="label label-info" style="background-color:#F1F3FA"><%= link_to 'Edit', edit_user_registration_path(@users) %></span>
+       
+    </div>
+  </div>
+  <div class="profile-usermenu">
+		<ul class="nav ">
+			<li class="active">
+        <%= link_to  user_path(current_user) do%>
+          <i class="glyphicon glyphicon-user"></i>Profile
+        <% end %>
+           
+			</li>
+      <li>
+      <a href="" data-toggle="tab"><i class="glyphicon glyphicon-credit-card"></i>Paypal</a>
+      </li>
+		</ul>
+	</div>
+	<!-- END MENU -->
+	
+</div>
+	
+  
