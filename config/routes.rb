@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get "/active_studies" => "market_studies#active_studies"
   get "/interactive_charts" => "interactive_charts#show_page"
   root 'market_studies#index'
+  get "show_paypal_info" => "users#show_paypal_info"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

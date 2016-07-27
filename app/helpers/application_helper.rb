@@ -7,6 +7,10 @@ module ApplicationHelper
 	  
 	end
 
+	def profile_active_link(link_path)
+	  class_name = current_page?(link_path) ? 'active' : ''
+	end
+
 	def resource_name
 		:user
 	end
