@@ -14,29 +14,42 @@ class TransactionsController < ApplicationController
 	    if status == "Completed" and type == "subscr_payment"
 	      u = User.find_by_email(params['item_name'])
 	      if u.present?
-		      u.transactions.build(paypal_return_params)
+		      u.transactions.build(paypal_hook_params)
 		   	  u.save!
 		   end
+		elsif type == "subscr_signup"
+			u = User.find_by_email(params['item_name'])
+			if u.present?
+				u.account_active = true
+				u.transactions.build(paypal_return_params)
+				u.save!
+			end
+
+		   	
 	    end
 	    render nothing: true
 	end
 
 	def paypal_return
 		#debugger
-		if params["txn_type"] == "subscr_signup"
-			u = User.find_by_email(params['item_name'])
-			if u.present?
+		auth = params["auth"]
+		if auth.present?
+			u = User.last
+			
 				u.account_active = true
-				u.transactions.build(paypal_return_params)
+				u.transactions.build(:auth=> auth)
 				u.save!
 				flash.clear
 				flash[:success] =  "Thanks for subscribing, you can view your subscription details in Settings. You are now logged in"
 				sign_in_and_redirect(u)
-			else
-			    flash.clear
-				flash[:success] =  "Sorry User does not exit."
-			end
+			
+			    
+		else
+			flash.clear
+			flash[:success] =  "Transaction was not processed"
+			redirect_to root_path
 		end
+		
 		
 		#redirect_to root_path , flash: {notice: "Please verify through email"}
 	end
