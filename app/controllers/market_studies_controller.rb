@@ -4,6 +4,7 @@ class MarketStudiesController < ApplicationController
   before_filter :authenticate_user!, only:[:show]
   # GET /market_studies
   def index
+    
     @market_studies = MarketStudy.all.page(params[:page]).per(5)
   end
 

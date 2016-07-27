@@ -39,6 +39,10 @@ class TransactionsController < ApplicationController
 				u.account_active = true
 				u.transactions.build(:auth=> auth)
 				u.save!
+				# Sends email to user when user is created.
+      			ExampleMailer.sample_email(u).deliver
+      			admin = User.find_by_email("omairr.azam@gmail.com")
+      			ExampleMailer.admin_email(admin,u).deliver
 				flash.clear
 				flash[:success] =  "Thanks for subscribing, you can view your subscription details in Settings. You are now logged in"
 				sign_in_and_redirect(u)

@@ -7,7 +7,7 @@
     </div>
     <div class="profile-usertitle-job">
       Subscribed at <br>
-      <p><%= current_user.transactions.where('txn_type=?', "subscr_signup").last.created_at.to_date %></p>
+      <p><%= current_user.transactions.where('txn_type=?', "subscr_signup").last.created_at.to_date rescue '-'%></p>
       <span class="label label-info" style="background-color:#F1F3FA"><%= link_to 'Edit', edit_user_registration_path(@users) %></span>
        
     </div>
