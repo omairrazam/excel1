@@ -1,5 +1,5 @@
 class ContactUs::ContactsController < ApplicationController
-
+  before_filter :authenticate_user!, except:[:create, :new]
   def create
     @contact = ContactUs::Contact.new(params[:contact_us_contact])
 

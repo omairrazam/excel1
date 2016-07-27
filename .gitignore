@@ -20,4 +20,5 @@
 /test
 /public/
 /config/secrets.yml
+/excelsheet/*
 

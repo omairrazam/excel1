@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726230716) do
+ActiveRecord::Schema.define(version: 20160727121913) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -28,10 +28,22 @@ ActiveRecord::Schema.define(version: 20160726230716) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
+  create_table "adt_data", force: :cascade do |t|
+    t.string   "x_values"
+    t.string   "y1_values"
+    t.string   "y2_values"
+    t.integer  "adt_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "adt_data", ["adt_id"], name: "index_adt_data_on_adt_id"
+
   create_table "adts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "graph_id"
+    t.string   "name"
   end
 
   add_index "adts", ["graph_id"], name: "index_adts_on_graph_id"
@@ -40,6 +52,7 @@ ActiveRecord::Schema.define(version: 20160726230716) do
     t.string   "sheetname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name"
   end
 
   create_table "commentaries", force: :cascade do |t|
@@ -73,10 +86,23 @@ ActiveRecord::Schema.define(version: 20160726230716) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "graph_data", force: :cascade do |t|
+    t.string   "x_values"
+    t.integer  "y1_values"
+    t.integer  "y2_values"
+    t.integer  "graph_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "timestamp_ms", limit: 8
+  end
+
+  add_index "graph_data", ["graph_id"], name: "index_graph_data_on_graph_id"
+
   create_table "graphs", force: :cascade do |t|
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "category_id"
+    t.string   "name"
   end
 
   add_index "graphs", ["category_id"], name: "index_graphs_on_category_id"

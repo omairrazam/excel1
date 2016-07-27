@@ -1,0 +1,279 @@
+
+<script type="text/javascript">
+	
+$(function() {
+        // Create the chart
+        window.chart = new Highcharts.StockChart({
+            chart : {
+                renderTo : 'container_static'
+            },
+
+
+            xAxis: [{
+              title: {
+                text: 'Time --> ',
+                style: {
+                  color: '#333333',
+                  font: '16px Arial',
+                  fontWeight:'bold'
+                }                
+              },
+              gridLineEnabled:true,
+              ordinal: true,
+              gridLineDashStyle:"longdash",
+              gridLineWidth:1,
+              gridLineColor:"#bababa",
+              dateTimeLabelFormats:{
+                  second:"%H:%M:%S",
+                  minute:"%H:%M",
+                  hour:"%H:%M",
+                  day:"%d %b",
+                  week:"%d %b",
+                  month:"%d %b",
+                  year:"%d %b"
+              },
+              type:"datetime",
+              
+            }],
+    
+           yAxis: {
+            opposite: false,
+            title: {
+                  text: 'Efficiency (%)',
+                  style: {
+                  color: '#333333',
+                  font: '16px Arial',
+                  fontWeight:'bold'
+                }
+
+              }
+            },
+
+            title : {
+                text : 'Machines Efficiency Data',
+                align: 'left',
+                style: {
+                  color: '#333333',
+                  font: '16px Arial',
+                  fontWeight:'bold'
+                }
+
+            },
+            scrollbar:{
+              liveRedraw:true
+            },
+
+            rangeSelector : {
+                allButtonsEnabled: true,
+
+                buttons: [
+                
+                {
+                    type: 'day',
+                    count:4,
+                    text: '4D',
+                    
+                },
+                {
+                    type: 'month',
+                    count:1,
+                    text: '1M',
+                    
+                }
+
+                ],
+                buttonTheme: {
+                    width: 60
+                },
+                selected: 0
+            },
+
+            series : [{
+              //pointStart:Date.UTC(2015,9,27),
+                name : 'Machine1',
+                data : d,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                turboThreshold:0,
+                color: '#008080', 
+            }]
+            
+        }, function(chart){
+
+            // apply the date pickers
+            setTimeout(function(){
+                $('input.highcharts-range-selector', $('#' + chart.options.chart.renderTo))
+                    .datepicker()
+            },0)
+        });
+   
+    
+    
+    // // Set the datepicker's date format
+    // $.datepicker.setDefaults({
+    //     dateFormat: 'yy-mm-dd',
+    //     onSelect: function(dateText) {
+    //       var id = $(this).attr('id');
+          
+    //       if (id == "info_box_datepicker"){
+
+    //       }else{
+    //         this.onchange();
+    //         this.onblur();
+    //       }
+    //     }
+    // });
+
+
+    
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(function() {
+        // Create the chart
+        window.chart = new Highcharts.StockChart({
+            chart : {
+                renderTo : 'container'
+            },
+
+
+            xAxis: [{
+              title: {
+                text: 'Time --> ',
+                style: {
+                  color: '#333333',
+                  font: '16px Arial',
+                  fontWeight:'bold'
+                }                
+              },
+              gridLineEnabled:true,
+              ordinal: true,
+              gridLineDashStyle:"longdash",
+              gridLineWidth:1,
+              gridLineColor:"#bababa",
+              dateTimeLabelFormats:{
+                  second:"%H:%M:%S",
+                  minute:"%H:%M",
+                  hour:"%H:%M",
+                  day:"%d %b",
+                  week:"%d %b",
+                  month:"%d %b",
+                  year:"%d %b"
+              },
+              type:"datetime",
+              
+            }],
+    
+           yAxis: {
+            opposite: false,
+            title: {
+                  text: 'Efficiency (%)',
+                  style: {
+                  color: '#333333',
+                  font: '16px Arial',
+                  fontWeight:'bold'
+                }
+
+              }
+            },
+
+            title : {
+                text : 'Machines Efficiency Data',
+                align: 'left',
+                style: {
+                  color: '#333333',
+                  font: '16px Arial',
+                  fontWeight:'bold'
+                }
+
+            },
+            scrollbar:{
+              liveRedraw:true
+            },
+
+            rangeSelector : {
+                allButtonsEnabled: true,
+
+                buttons: [
+                
+                {
+                    type: 'day',
+                    count:4,
+                    text: '4D',
+                    
+                },
+                {
+                    type: 'month',
+                    count:1,
+                    text: '1M',
+                    
+                }
+
+                ],
+                buttonTheme: {
+                    width: 60
+                },
+                selected: 0
+            },
+
+            series : [{
+              //pointStart:Date.UTC(2015,9,27),
+                name : 'Machine1',
+                data : d,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                turboThreshold:0,
+                color: '#008080', 
+            }]
+            
+        }, function(chart){
+
+            // apply the date pickers
+            setTimeout(function(){
+                $('input.highcharts-range-selector', $('#' + chart.options.chart.renderTo))
+                    .datepicker()
+            },0)
+        });
+   
+    
+    
+    // Set the datepicker's date format
+    $.datepicker.setDefaults({
+        dateFormat: 'yy-mm-dd',
+        onSelect: function(dateText) {
+          var id = $(this).attr('id');
+          
+          if (id == "info_box_datepicker"){
+
+          }else{
+            this.onchange();
+            this.onblur();
+          }
+        }
+    });
+
+
+    
+});
+
+
+
+
+</script>
