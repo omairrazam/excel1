@@ -1,15 +1,11 @@
 
-<script type="text/javascript">
-  var d     = <%= @data1 %>;
-</script>
-
-<script src="https://code.highcharts.com/stock/highstock.js"></script>
-<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="http://code.highcharts.com/stock/highstock.js"></script>
+<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
 
 <% content_for :head do %>
     <%= stylesheet_link_tag  'interactive_charts', media: 'all' %>
     <%#= stylesheet_link_tag  'bootstrap-select'  , media: 'all' %>
-    <%= javascript_tag 'interactive_charts', media: 'all' %>
+    <%#= javascript_tag 'interactive_charts', media: 'all' %>
 <% end %>
 
 <div class="row">
@@ -17,10 +13,44 @@
 	<%= render :partial => "right_sidebar" %>
 	</div>
 	<div class="col-md-10">
-        <div id="container_static" style="position:fixed; height: 300px; min-width: 1110px; z-index:10"></div>
+   
+        <div id="container_static" style=" height: 300px; min-width: 1110px; z-index:10"></div>
         <br>
         <br>
-		<div id="container" style="height: 400px; min-width: 310px; margin-top:300px;"></div>
+		<div id="container4" style="height: 300px; min-width: 310px;"></div>
+        <br>
+        <br>
+        <div id="container5" style="height: 300px; min-width: 310px; margin-top:300px;"></div>
 	</div>
 </div>
-<%= render :partial => "charts" %>
+<%= render partial: "sp_static_chart" , locals: {divId: 'container_static', data:@sp_graph_data} %>
+<%= render @graphs if @graphs.present?%>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<script type="text/javascript">
+$('#container_static').sticky_div();
+// Set the datepicker's date format
+$(function(){
+    $.datepicker.setDefaults({
+        dateFormat: 'yy-mm-dd',
+        onSelect: function(dateText) {
+          var id = $(this).attr('id');
+          
+          if (id == "info_box_datepicker"){
+
+          }else{
+            this.onchange();
+            this.onblur();
+          }
+        }
+    });
+});
+    
+</script>

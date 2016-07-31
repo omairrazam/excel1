@@ -54,4 +54,5 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'kaminari', '~> 0.17.0'
 gem 'contact_us', '~> 1.1'
 gem 'ckeditor'
+gem "cocoon"
 

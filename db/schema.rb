@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160727121913) do
+ActiveRecord::Schema.define(version: 20160731000439) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -50,9 +50,14 @@ ActiveRecord::Schema.define(version: 20160727121913) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "sheetname"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "name"
+    t.string   "open_colname"
+    t.string   "close_colname"
+    t.string   "high_colname"
+    t.string   "low_colname"
+    t.string   "sp_x_colname"
   end
 
   create_table "commentaries", force: :cascade do |t|
@@ -88,8 +93,8 @@ ActiveRecord::Schema.define(version: 20160727121913) do
 
   create_table "graph_data", force: :cascade do |t|
     t.string   "x_values"
-    t.integer  "y1_values"
-    t.integer  "y2_values"
+    t.float    "y1_values"
+    t.float    "y2_values"
     t.integer  "graph_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
@@ -103,6 +108,12 @@ ActiveRecord::Schema.define(version: 20160727121913) do
     t.datetime "updated_at",  null: false
     t.integer  "category_id"
     t.string   "name"
+    t.string   "x_colname"
+    t.string   "y1_colname"
+    t.string   "y2_colname"
+    t.string   "sheetname"
+    t.string   "y1_legend"
+    t.string   "y2_legend"
   end
 
   add_index "graphs", ["category_id"], name: "index_graphs_on_category_id"
@@ -129,6 +140,20 @@ ActiveRecord::Schema.define(version: 20160727121913) do
     t.string   "price_target"
     t.integer  "user_id"
   end
+
+  create_table "sp_graphs", force: :cascade do |t|
+    t.float    "open"
+    t.float    "high"
+    t.float    "low"
+    t.float    "close"
+    t.integer  "timestamp_ms", limit: 8
+    t.integer  "category_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "x_values"
+  end
+
+  add_index "sp_graphs", ["category_id"], name: "index_sp_graphs_on_category_id"
 
   create_table "timing_models", force: :cascade do |t|
     t.string   "title"

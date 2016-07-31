@@ -1,8 +1,4 @@
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js">
-  </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/i18n/defaults-*.min.js"></script>
 
 <div class="nav-side-menu">
     <div class="brand">Chart Options</div>
@@ -12,18 +8,21 @@
   
             
             <ul id="menu-content" class="menu-content collapse out">
-                <li class = "active">
-                  <a href="#">
-                  <i class="fa fa-area-chart"></i> MM Timing Model
-                  </a>
-                </li>
-
-                 <li>
-                  <a href="#">
-                  <i class="fa fa-bar-chart"></i> NYSE Chart Model
-                  </a>
-                </li>
-
+            <%#= debugger %>
+              <% if @selected_category.present? %>
+                 <li class = "active">
+                    <a href="#">
+                      <i class="fa fa-area-chart"></i> <%= @selected_category.name %>
+                    </a>
+                  </li>
+               <!--  <% @selected_category.graphs.each do |graph| %>
+                  <li class = "active">
+                    <a href="#">
+                      <i class="fa fa-area-chart"></i> graph.name
+                    </a>
+                  </li>
+                <% end %> -->
+               <% end %>
                <!--  <li  data-toggle="collapse" data-target="#products" class="collapsed active">
                   <a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>
                 </li>

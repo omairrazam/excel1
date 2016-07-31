@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :graphs
+  resources :categories
   resources :general_market_studies
   resources :market_internals
   resources :market_studies
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
   get "/interactive_charts" => "interactive_charts#show_page"
   root 'market_studies#index'
   get "show_paypal_info" => "users#show_paypal_info"
+  match "/graphs/update_data/:graph_id" => "graphs#update_data", as: :graph_update_data, via: :get
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

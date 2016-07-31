@@ -13,6 +13,9 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require cocoon
 //= require ckeditor/init
+//= require jquery.sticky-div
+
 // require turbolinks
 // require_tree .

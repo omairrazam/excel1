@@ -1,0 +1,7 @@
+<%  @data1  =  graph.graph_datums.pluck(:timestamp_ms,:y1_values) %>
+<%  @data2  =  graph.graph_datums.pluck(:timestamp_ms,:y2_values) %>
+<%  @divId  = 'container' + graph.id.to_s %>
+
+
+
+<%= render :partial => "charts", :locals => { :data1 => @data1, :data2 => @data2, :divId => @divId} %>
