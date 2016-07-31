@@ -9,19 +9,21 @@
             
             <ul id="menu-content" class="menu-content collapse out">
             <%#= debugger %>
-              <% if @selected_category.present? %>
-                 <li class = "active">
+              <% if @categories.present? %>
+                <% @categories.each do |cat| %>
+                  <li class = <%= ic_sidebar_link_class( cat.name,show_by_category_path(cat)) %>>
                     <a href="#">
-                      <i class="fa fa-area-chart"></i> <%= @selected_category.name %>
+                      <i class="fa fa-area-chart"></i> <%= link_to cat.name, show_by_category_path(cat) %>
                     </a>
                   </li>
-               <!--  <% @selected_category.graphs.each do |graph| %>
-                  <li class = "active">
-                    <a href="#">
-                      <i class="fa fa-area-chart"></i> graph.name
-                    </a>
-                  </li>
-                <% end %> -->
+                   <!--  <% @selected_category.graphs.each do |graph| %>
+                      <li class = "active">
+                        <a href="#">
+                          <i class="fa fa-area-chart"></i> graph.name
+                        </a>
+                      </li>
+                    <% end %> -->
+                <% end %>
                <% end %>
                <!--  <li  data-toggle="collapse" data-target="#products" class="collapsed active">
                   <a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>

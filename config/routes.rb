@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :users
   get "/active_studies" => "market_studies#active_studies"
   get "/interactive_charts" => "interactive_charts#show_page"
+  get '/show_by_category/:category_id' => 'interactive_charts#show_by_category', as: :show_by_category
   root 'market_studies#index'
   get "show_paypal_info" => "users#show_paypal_info"
   match "/graphs/update_data/:graph_id" => "graphs#update_data", as: :graph_update_data, via: :get

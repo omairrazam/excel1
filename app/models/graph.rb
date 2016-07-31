@@ -19,14 +19,15 @@ class Graph < ActiveRecord::Base
 				date 		  = row[x_colname].to_s
 				d.x_values    = date
 				d.y1_values   = row[y1_colname].to_f.round(8)
-				d.y2_values   = row[y2_colname].to_f.round(8)
+				if y2_colname.present?
+				 d.y2_values  = row[y2_colname].to_f.round(8)
+				end
 				d.graph_id    = self.id
 				
 				# make x_values_timestamp in millisecond to send to graph
 				datee = date[0..3] + '-' + date[4..5] + '-' + date[6..7]
 				datee = datee.to_datetime.strftime('%s').to_i * 1000
 				d.timestamp_ms = datee
-				
 				d.save!
 			end
 		end

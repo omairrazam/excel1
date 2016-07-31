@@ -48,7 +48,7 @@ class GraphsController < ApplicationController
   def update_data
     graph = Graph.find(params[:graph_id])
     graph.update_data
-    redirect_to :back, success: 'Graph data has loaded'
+    redirect_to category_path(graph.category), success: 'Graph data has loaded'
   end 
 
   private

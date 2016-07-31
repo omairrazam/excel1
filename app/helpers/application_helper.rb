@@ -1,10 +1,15 @@
 module ApplicationHelper
 	
 	def nav_link(link_text, link_path)
-	  class_name = current_page?(link_path) ? 'active' : ''
-
+		#debugger
+	  class_name = current_page?(link_path)  ? 'active' : ''
+	  #class_name = current_page?(extra_path) ? 'active' : ''
 	  link_to link_text, link_path, :class => "blog-nav-item " +  class_name
 	  
+	end
+
+	def ic_sidebar_link_class(link_text, link_path)
+	  class_name = current_page?(link_path) ? 'active' : ''
 	end
 
 	def profile_active_link(link_path)

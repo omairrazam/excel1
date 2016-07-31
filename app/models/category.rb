@@ -7,7 +7,7 @@ class Category < ActiveRecord::Base
 
 	def fetch_sp_graph
 		xls     = Roo::Spreadsheet.open(Rails.root.to_s +  "/excelsheet/actual.xlsm")
-		debugger
+		#debugger
 		current_sheet = xls.sheet(sheetname)
 		
 		SpGraph.transaction do
