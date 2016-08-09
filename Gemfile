@@ -48,6 +48,7 @@ end
 group :production do
   gem 'pg', '0.18.4'
 end
+gem 'rails_12factor', group: :production
 gem 'roo', '~> 2.4.0'
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'

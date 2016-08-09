@@ -16,9 +16,9 @@
 !/log/.keep
 /tmp
 .byebug_history
-/config/secrets.yml
+
 /test
 /public/
-/config/secrets.yml
+
 /excelsheet/*
 
