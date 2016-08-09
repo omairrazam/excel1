@@ -1,12 +1,14 @@
-<%  @data1  =  graph.graph_datums.pluck(:timestamp_ms,:y1_values) %>
-<%  @data2  =  graph.graph_datums.pluck(:timestamp_ms,:y2_values) %>
+<%  @data1  =  graph.graph_datums.order('timestamp_ms asc').pluck(:timestamp_ms,:y1_values) %>
+<%  @data2  =  graph.graph_datums.order('timestamp_ms asc').pluck(:timestamp_ms,:y2_values) %>
 <%  @divId  = 'container' + graph.id.to_s %>
-<% if graph.graph_datums.first.y2_values.present? %>
+<%  @color_y1 = graph.color_y1  %>
+<%  @color_y2 = graph.color_y2 %>
+<% if graph.graph_datums.first.try(:y2_values).present? %>
 	<%  @names =   [graph.y1_legend,graph.y2_legend] %>
 <% else %>
 	<%  @names =   [graph.y1_legend] %>
 <% end %>
 <% @t = [graph.name] %>
 
-
-<%= render :partial => "charts", :locals => { :data1 => @data1, :data2 => @data2, :divId => @divId, :names => @names,:tit=> @t} %>
+<%#= debugger %>
+<%= render :partial => "charts", :locals => { :data1 => @data1, :data2 => @data2, :divId => @divId, :names => @names,:tit=> @t, :color_y1 => @color_y1, :color_y2 => @color_y2 } %>

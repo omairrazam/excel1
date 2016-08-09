@@ -3,11 +3,14 @@ class Graph < ActiveRecord::Base
 	belongs_to :category
 	has_many   :adts, :dependent => :destroy
 	has_many   :graph_datums, :dependent => :destroy
-	after_create :update_data
+	#after_create :update_data
 	
 	def update_data
-		xls     = Roo::Spreadsheet.open(Rails.root.to_s +  "/excelsheet/actual.xlsm")
-		
+		xls     = Roo::Excelx.open(Rails.root.to_s +  "/excelsheet/actual.xlsm")
+		#exname = Rails.root.to_s +  "/excelsheet/actual.xlsm"
+		#csvname = Rails.root.to_s +  "/excelsheet/actual.csv"
+		#xls = xls.to_csv
+		#xls =     Roo::CSV.new(Rails.root.to_s +  "/excelsheet/actual.csv")
 		current_sheet = xls.sheet(sheetname)
 		
 		GraphDatum.transaction do

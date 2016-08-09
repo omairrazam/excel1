@@ -1,7 +1,6 @@
 module ApplicationHelper
 	
 	def nav_link(link_text, link_path)
-		#debugger
 	  class_name = current_page?(link_path)  ? 'active' : ''
 	  #class_name = current_page?(extra_path) ? 'active' : ''
 	  link_to link_text, link_path, :class => "blog-nav-item " +  class_name

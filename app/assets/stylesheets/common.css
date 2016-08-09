@@ -107,3 +107,7 @@
     text-decoration: none;
 }
 
+.panel-heading-custom{
+  background-color: #4f5b69 !important;
+  color: white !important;
+}

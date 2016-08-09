@@ -1,138 +1,6 @@
 
 <script type="text/javascript">
-	//alert('https://www.highcharts.com/samples/data/jsonp.php?filename=new-intraday.json&callback=?');
 
-// $(function() {
-//         // Create the chart
-//         window.chart = new Highcharts.StockChart({
-//             chart : {
-//                 renderTo : <%= divId %>
-//             },
-
-
-//             xAxis: [{
-//               title: {
-                
-//                 style: {
-//                   color: '#333333',
-//                   font: '16px Arial',
-//                   fontWeight:'bold'
-//                 }                
-//               },
-//               gridLineEnabled:true,
-//               ordinal: true,
-//               gridLineDashStyle:"longdash",
-//               gridLineWidth:1,
-//               gridLineColor:"#bababa",
-//               dateTimeLabelFormats:{
-//                   second:"%H:%M:%S",
-//                   minute:"%H:%M",
-//                   hour:"%H:%M",
-//                   day:"%d %b",
-//                   week:"%d %b",
-//                   month:"%d %b",
-//                   year:"%d %b"
-//               },
-//               type:"datetime",
-              
-//             }],
-    
-//            yAxis: {
-//             opposite: false,
-//             title: {
-                 
-//                   style: {
-//                   color: '#333333',
-//                   font: '16px Arial',
-//                   fontWeight:'bold'
-//                 }
-
-//               }
-//             },
-
-//             title : {
-//                 text: "Temporary name",
-                
-//                 style: {
-//                   color: '#333333',
-//                   font: '16px Arial',
-//                   fontWeight:'bold'
-//                 }
-
-//             },
-            
-//             scrollbar:{
-//               liveRedraw:true
-//             },
-
-//             rangeSelector : {
-//                 allButtonsEnabled: true,
-
-//                 buttons: [
-                
-//                 {
-//                     type: 'day',
-//                     count:4,
-//                     text: '4D',
-                    
-//                 },
-//                 {
-//                     type: 'month',
-//                     count:1,
-//                     text: '1M',
-                    
-//                 }
-
-//                 ],
-//                 buttonTheme: {
-//                     width: 60
-//                 },
-//                 selected: 0
-//             },
-//             legend: {
-//             enabled: true,
-//             align: 'right',
-//             backgroundColor: '#FCFFC5',
-//             borderColor: 'black',
-//             borderWidth: 2,
-//             layout: 'vertical',
-//             verticalAlign: 'top',
-//             floating:'true',
-//             y: 100,
-//             shadow: true
-//         },
-
-//             series : series
-            
-//         });
-     
-// });
-
-
-// var series = [{
-//               //pointStart:Date.UTC(2015,9,27),
-//                 name : '4%+Up High Volume',
-//                 data : <%= data1 %>,
-//                 tooltip: {
-//                     valueDecimals: 2
-//                 },
-//                 turboThreshold:0,
-//                 color: '#008080', 
-//             }
-//             <%if data2.present? %>
-//             ,
-//               {
-//                 name : '4%+Down High Volume',
-//                 data : <%= data2 %>,
-//                 tooltip: {
-//                     valueDecimals: 2
-//                 },
-//                 turboThreshold:0,
-//                 color: '#C1271F', 
-//             }
-//             <% end %>
-
-//             ]
 
 $(function () {
     var seriesOptions = [],
@@ -198,14 +66,15 @@ $(function () {
         if (i == 0){
           seriesOptions[i] = {
                    name: name,
-                   data: <%= data1 %>,
-                   color: '#008080'
+                   data:  <%= data1 %>,
+                   color: <%=raw "'"+color_y1+"'" %>
+                   
           };
         }else{
           seriesOptions[i] = {
               name: name,
-              data: <%= data2 %>,
-              color: '#C1271F',
+              data:  <%= data2 %>,
+              color: <%=raw "'"+color_y2+"'" %>,
           };
         }
         seriesCounter += 1

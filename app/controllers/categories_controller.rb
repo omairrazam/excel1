@@ -24,7 +24,7 @@ class CategoriesController < ApplicationController
   # POST /categories
   def create
     @category = Category.new(category_params)
-
+    #debugger
     if @category.save
       redirect_to @category, notice: 'Category was successfully created.'
     else
@@ -71,6 +71,8 @@ class CategoriesController < ApplicationController
                                                            :sheetname,
                                                            :y1_legend,
                                                            :y2_legend, 
+                                                           :color_y1,
+                                                           :color_y2,
                                                            :_destroy])
     end
    

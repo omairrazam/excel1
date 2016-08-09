@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160731000439) do
+ActiveRecord::Schema.define(version: 20160804050631) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -24,9 +27,9 @@ ActiveRecord::Schema.define(version: 20160731000439) do
     t.datetime "updated_at"
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "adt_data", force: :cascade do |t|
     t.string   "x_values"
@@ -37,7 +40,7 @@ ActiveRecord::Schema.define(version: 20160731000439) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "adt_data", ["adt_id"], name: "index_adt_data_on_adt_id"
+  add_index "adt_data", ["adt_id"], name: "index_adt_data_on_adt_id", using: :btree
 
   create_table "adts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -46,7 +49,7 @@ ActiveRecord::Schema.define(version: 20160731000439) do
     t.string   "name"
   end
 
-  add_index "adts", ["graph_id"], name: "index_adts_on_graph_id"
+  add_index "adts", ["graph_id"], name: "index_adts_on_graph_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "sheetname"
@@ -70,20 +73,6 @@ ActiveRecord::Schema.define(version: 20160731000439) do
     t.string   "priceTarget"
   end
 
-  create_table "datasets", force: :cascade do |t|
-    t.string   "sheet_name"
-    t.string   "x_colname"
-    t.string   "y1_colname"
-    t.string   "y2_colname"
-    t.integer  "adt_id"
-    t.integer  "graph_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "datasets", ["adt_id"], name: "index_datasets_on_adt_id"
-  add_index "datasets", ["graph_id"], name: "index_datasets_on_graph_id"
-
   create_table "general_market_studies", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
@@ -93,15 +82,15 @@ ActiveRecord::Schema.define(version: 20160731000439) do
 
   create_table "graph_data", force: :cascade do |t|
     t.string   "x_values"
-    t.float    "y1_values"
-    t.float    "y2_values"
     t.integer  "graph_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "timestamp_ms", limit: 8
+    t.float    "y1_values"
+    t.float    "y2_values"
   end
 
-  add_index "graph_data", ["graph_id"], name: "index_graph_data_on_graph_id"
+  add_index "graph_data", ["graph_id"], name: "index_graph_data_on_graph_id", using: :btree
 
   create_table "graphs", force: :cascade do |t|
     t.datetime "created_at",  null: false
@@ -114,9 +103,11 @@ ActiveRecord::Schema.define(version: 20160731000439) do
     t.string   "sheetname"
     t.string   "y1_legend"
     t.string   "y2_legend"
+    t.string   "color_y1"
+    t.string   "color_y2"
   end
 
-  add_index "graphs", ["category_id"], name: "index_graphs_on_category_id"
+  add_index "graphs", ["category_id"], name: "index_graphs_on_category_id", using: :btree
 
   create_table "interesteds", force: :cascade do |t|
     t.text     "content"
@@ -153,14 +144,7 @@ ActiveRecord::Schema.define(version: 20160731000439) do
     t.string   "x_values"
   end
 
-  add_index "sp_graphs", ["category_id"], name: "index_sp_graphs_on_category_id"
-
-  create_table "timing_models", force: :cascade do |t|
-    t.string   "title"
-    t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  add_index "sp_graphs", ["category_id"], name: "index_sp_graphs_on_category_id", using: :btree
 
   create_table "transactions", force: :cascade do |t|
     t.text     "notification"
@@ -209,7 +193,7 @@ ActiveRecord::Schema.define(version: 20160731000439) do
     t.string   "amount3"
   end
 
-  add_index "transactions", ["user_id"], name: "index_transactions_on_user_id"
+  add_index "transactions", ["user_id"], name: "index_transactions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",      null: false
@@ -232,7 +216,12 @@ ActiveRecord::Schema.define(version: 20160731000439) do
     t.string   "username"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "adt_data", "adts"
+  add_foreign_key "adts", "graphs"
+  add_foreign_key "graph_data", "graphs"
+  add_foreign_key "graphs", "categories"
+  add_foreign_key "sp_graphs", "categories"
 end

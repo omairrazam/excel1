@@ -19,7 +19,18 @@
         <br>
 
         <% @graphs.each do |graph| %>
-		<div id=<%= "container"+graph.id.to_s %> style="height: 300px; min-width: 310px;"></div>
+        <div id=<%= "container_graph" + graph.id.to_s %>>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Pick Your ADT
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="#">HTML</a></li>
+              <li><a href="#">CSS</a></li>
+              <li><a href="#">JavaScript</a></li>
+            </ul>
+          </div>
+		      <div id=<%= "container" + graph.id.to_s %> style="height: 300px; min-width: 310px;"></div>
+        </div>
         <br>
         <br>
         <% end %>

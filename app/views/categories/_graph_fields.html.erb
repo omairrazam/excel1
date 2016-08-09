@@ -17,6 +17,7 @@
 	 <%= f.text_field :y1_colname, class:  "form-control field" %>
 	  <%= f.label "Dataset1 Legend Name" %>
 	 <%= f.text_field :y1_legend, class:  "form-control field" %>
+	 <%= f.color_field :color_y1 %>
  </div>
 
  
@@ -25,6 +26,14 @@
 		 <%= f.text_field :y2_colname, class:  "form-control field" %>
 		 <%= f.label "Dataset2 Legend Name" %>
 		 <%= f.text_field :y2_legend, class:  "form-control field" %>
+		 <%= f.color_field :color_y2 %>
+		 <div class="example">
+<!-- <form method="get">
+   
+    <input type="color" name="color2" value="#3355cc">
+    
+</form> -->
+    </div>
  	</div>
  <br>
  <%= link_to_remove_association "remove graph", f %>

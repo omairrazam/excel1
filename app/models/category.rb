@@ -1,6 +1,6 @@
 class Category < ActiveRecord::Base
-	has_many :graphs, :dependent => :destroy
-	has_many  :sp_graphs, :dependent => :destroy
+	has_many :graphs#, :dependent => :destroy
+	has_many  :sp_graphs#, :dependent => :destroy
 	after_create :fetch_sp_graph
 	accepts_nested_attributes_for :graphs, reject_if: :all_blank, allow_destroy: true
 
