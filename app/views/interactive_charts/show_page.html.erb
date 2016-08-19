@@ -7,11 +7,15 @@
     <%#= stylesheet_link_tag  'bootstrap-select'  , media: 'all' %>
     <%#= javascript_tag 'interactive_charts', media: 'all' %>
 <% end %>
-
+<a class="btn btn-large btn-success" href="javascript:void(0);" onclick="javascript:introJs().setOption('showBullets', false).start();">Guide</a>
 <div class="row">
 	<div class="col-md-2">
 	<%= render :partial => "right_sidebar" %>
 	</div>
+
+
+
+
 	<div class="col-md-10">
    
         <div id="container_static" style=" height: 300px; min-width: 1110px; z-index:10"></div>
@@ -21,8 +25,8 @@
         <% @graphs.each do |graph| %>
         <div id=<%= "container_graph" + graph.id.to_s %>>
           <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Pick Your ADT
-            <span class="caret"></span></button>
+            <!-- <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Pick Your ADT
+            <span class="caret"></span></button> -->
             <ul class="dropdown-menu">
               <li><a href="#">HTML</a></li>
               <li><a href="#">CSS</a></li>

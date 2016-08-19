@@ -1,7 +1,0 @@
-development:
-  adapter: postgresql
-  encoding: unicode
-  database: data_excel1
-  pool: 5
-  username: Apple
-  password: root

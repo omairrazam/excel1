@@ -43,7 +43,10 @@ group :development do
 	gem 'pg', '0.18.4'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem "figaro"
 end
+
+gem  'twitter'
 
 group :production do
   gem 'pg', '0.18.4'
@@ -56,4 +59,14 @@ gem 'kaminari', '~> 0.17.0'
 gem 'contact_us', '~> 1.1'
 gem 'ckeditor'
 gem "cocoon"
+
+gem 'figaro'
+gem 'puma'
+group :development do
+  gem 'capistrano'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm'
+end
 

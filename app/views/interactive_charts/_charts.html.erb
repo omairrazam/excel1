@@ -6,9 +6,11 @@ $(function () {
     var seriesOptions = [],
         seriesCounter = 0,
         names = <%= raw names %>,
+        d  = <%= raw data %>,
+        c  = <%= raw colors %>,
         title = <%= raw tit %>;
-       
-       
+      //alert(d.length);
+        //alert(names.length);
     /**
      * Create the chart when all data is loaded
      * @returns {undefined}
@@ -61,22 +63,31 @@ $(function () {
         });
     }
 
-    $.each(names, function (i, name) {
+    
 
-        if (i == 0){
-          seriesOptions[i] = {
+    $.each(names, function (i, name) {
+       //alert(name);
+      seriesOptions[i] = {
                    name: name,
-                   data:  <%= data1 %>,
-                   color: <%=raw "'"+color_y1+"'" %>
+                   data:  d[i],
+                   color: c[i]
+        };
+        
+        // if (i == 0){
+        //   seriesOptions[i] = {
+        //            name: name,
+        //            data:  d[i],
+        //            color: <%=raw "'"+color_y1+"'" %>
                    
-          };
-        }else{
-          seriesOptions[i] = {
-              name: name,
-              data:  <%= data2 %>,
-              color: <%=raw "'"+color_y2+"'" %>,
-          };
-        }
+        //   };
+        // }else{
+        //   seriesOptions[i] = {
+        //       name: name,
+        //       data:  d[i],
+        //       color: <%=raw "'"+color_y2+"'" %>,
+        //       visible:false
+        //   };
+        // }
         seriesCounter += 1
         if (seriesCounter === names.length) {
           titleOptions = {

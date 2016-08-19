@@ -12,7 +12,8 @@ class GraphsController < ApplicationController
 
   # GET /graphs/new
   def new
-    @graph = Graph.new
+    @category   =  Category.find(params[:category_id])
+    @graph      =  @category.graphs.new
   end
 
   # GET /graphs/1/edit
@@ -21,10 +22,11 @@ class GraphsController < ApplicationController
 
   # POST /graphs
   def create
-    @graph = Graph.new(graph_params)
+    @category   =  Category.find(params[:category_id])
+    @graph      =  @category.graphs.new(graph_params)
 
     if @graph.save
-      redirect_to @graph, notice: 'Graph was successfully created.'
+      redirect_to category_path(@category), notice: 'Graph was successfully created.'
     else
       render :new
     end
@@ -32,8 +34,9 @@ class GraphsController < ApplicationController
 
   # PATCH/PUT /graphs/1
   def update
+    #debugger
     if @graph.update(graph_params)
-      redirect_to @graph, notice: 'Graph was successfully updated.'
+      redirect_to category_path(@category), notice: 'Graph was successfully updated.'
     else
       render :edit
     end
@@ -42,7 +45,7 @@ class GraphsController < ApplicationController
   # DELETE /graphs/1
   def destroy
     @graph.destroy
-    redirect_to graphs_url, notice: 'Graph was successfully destroyed.'
+    redirect_to category_path(@category), notice: 'Graph was successfully destroyed.'
   end
 
   def update_data
@@ -54,11 +57,24 @@ class GraphsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_graph
-      @graph = Graph.find(params[:id])
+      #debugger
+      @category = Category.find(params[:category_id])
+      @graph    = @category.graphs.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def graph_params
-      params[:graph]
+      
+      params.require(:graph).permit([
+                                                           :name,
+                                                           :x_colname,
+                                                           :y1_colname,
+                                                           :y2_colname,
+                                                           :sheetname,
+                                                           :y1_legend,
+                                                           :y2_legend, 
+                                                           :color_y1,
+                                                           :color_y2])
+      
     end
 end

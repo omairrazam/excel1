@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804050631) do
+ActiveRecord::Schema.define(version: 20160813214902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,11 +33,12 @@ ActiveRecord::Schema.define(version: 20160804050631) do
 
   create_table "adt_data", force: :cascade do |t|
     t.string   "x_values"
-    t.string   "y1_values"
-    t.string   "y2_values"
     t.integer  "adt_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "timestamp_ms", limit: 8
+    t.float    "y1_values"
+    t.float    "y2_values"
   end
 
   add_index "adt_data", ["adt_id"], name: "index_adt_data_on_adt_id", using: :btree
@@ -47,6 +48,11 @@ ActiveRecord::Schema.define(version: 20160804050631) do
     t.datetime "updated_at", null: false
     t.integer  "graph_id"
     t.string   "name"
+    t.string   "x_colname"
+    t.string   "y_colname"
+    t.string   "sheetname"
+    t.string   "y_legend"
+    t.string   "color_y"
   end
 
   add_index "adts", ["graph_id"], name: "index_adts_on_graph_id", using: :btree

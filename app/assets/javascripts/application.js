@@ -16,6 +16,6 @@
 //= require cocoon
 //= require ckeditor/init
 //= require jquery.sticky-div
-
+//= require intro
 // require turbolinks
 // require_tree .
